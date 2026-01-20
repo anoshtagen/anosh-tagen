@@ -31,7 +31,7 @@ export function Navbar() {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link href="/">
-          <a className="flex items-center gap-2 group cursor-pointer">
+          <div className="flex items-center gap-2 group cursor-pointer">
             <div className="relative flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 group-hover:border-accent/50 transition-colors">
               <Cpu className="w-6 h-6 text-primary group-hover:text-accent transition-colors" />
               <div className="absolute inset-0 bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -39,7 +39,7 @@ export function Navbar() {
             <span className="text-2xl font-display font-bold tracking-widest text-white">
               NEXUS
             </span>
-          </a>
+          </div>
         </Link>
 
         {/* Desktop Nav */}
