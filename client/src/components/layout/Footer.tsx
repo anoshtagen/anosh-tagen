@@ -21,13 +21,18 @@ export function Footer() {
               ))}
             </div>
           </div>
-          
+
           <div>
             <h4 className="font-display font-bold text-white mb-6">Solutions</h4>
             <ul className="space-y-4">
-              {['Workflow Automation', 'AI Agents', 'Predictive Analytics', 'Consulting'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-muted-foreground hover:text-accent transition-colors text-sm">{item}</a>
+              {[
+                { name: 'Workflow Automation', href: '#services' },
+                { name: 'AI Agents', href: '#services' },
+                { name: 'Predictive Analytics', href: '#services' },
+                { name: 'Consulting', href: '#services' }
+              ].map((item) => (
+                <li key={item.name}>
+                  <a href={item.href} className="text-muted-foreground hover:text-accent transition-colors text-sm">{item.name}</a>
                 </li>
               ))}
             </ul>
@@ -36,15 +41,20 @@ export function Footer() {
           <div>
             <h4 className="font-display font-bold text-white mb-6">Company</h4>
             <ul className="space-y-4">
-              {['About Nexus', 'Case Studies', 'Careers', 'Contact'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-muted-foreground hover:text-accent transition-colors text-sm">{item}</a>
+              {[
+                { name: 'About Nexus', href: '#about' },
+                { name: 'Case Studies', href: '#portfolio' },
+                { name: 'Careers', href: '#' },
+                { name: 'Contact', href: '#contact' }
+              ].map((item) => (
+                <li key={item.name}>
+                  <a href={item.href} className="text-muted-foreground hover:text-accent transition-colors text-sm">{item.name}</a>
                 </li>
               ))}
             </ul>
           </div>
         </div>
-        
+
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/30 text-xs font-tech">
             © 2026 NEXUS AUTOMATION INC. ALL SYSTEMS OPERATIONAL.

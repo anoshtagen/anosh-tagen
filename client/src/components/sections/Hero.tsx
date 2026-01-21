@@ -8,9 +8,9 @@ export function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={heroBg} 
-          alt="AI Network" 
+        <img
+          src={heroBg}
+          alt="AI Network"
           className="w-full h-full object-cover opacity-60"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background" />
@@ -23,19 +23,19 @@ export function Hero() {
           <motion.div
             key={i}
             className="absolute border border-white/5 bg-white/5 backdrop-blur-sm rounded-lg"
-            initial={{ 
-              x: Math.random() * window.innerWidth, 
+            initial={{
+              x: Math.random() * window.innerWidth,
               y: Math.random() * window.innerHeight,
               opacity: 0,
               scale: 0.5
             }}
-            animate={{ 
+            animate={{
               y: [null, Math.random() * -100],
               opacity: [0, 0.3, 0],
               rotate: [0, 90]
             }}
-            transition={{ 
-              duration: 10 + Math.random() * 10, 
+            transition={{
+              duration: 10 + Math.random() * 10,
               repeat: Infinity,
               delay: Math.random() * 5
             }}
@@ -59,28 +59,30 @@ export function Hero() {
               Next Gen Intelligence
             </span>
           </div>
-          
+
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6 leading-tight">
             AUTOMATE <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/50">THE FUTURE</span>
           </h1>
-          
+
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground font-light mb-10 leading-relaxed">
-            We build intelligent autonomous agents and neural workflows that scale your business. 
+            We build intelligent autonomous agents and neural workflows that scale your business.
             Experience the next evolution of digital efficiency.
           </p>
-          
+
           <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="h-14 px-8 bg-accent text-background font-bold tracking-wider hover:bg-white hover:shadow-[0_0_30px_-5px_var(--color-accent)] transition-all duration-300 text-base"
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             >
-              Start Automation
+              Get in Touch
             </Button>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               variant="outline"
               className="h-14 px-8 border-white/20 bg-transparent text-white hover:bg-white/10 backdrop-blur-sm transition-all duration-300 group text-base"
+              onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
             >
               View Case Studies
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -89,7 +91,7 @@ export function Hero() {
         </motion.div>
 
         {/* Stats Strip */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}

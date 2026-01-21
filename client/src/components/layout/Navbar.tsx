@@ -25,21 +25,18 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "py-4 bg-background/80 backdrop-blur-md border-b border-white/5" : "py-6 bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "py-4 bg-background/80 backdrop-blur-md border-b border-white/5" : "py-6 bg-transparent"
+        }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link href="/">
-          <div className="flex items-center gap-2 group cursor-pointer">
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 group-hover:border-accent/50 transition-colors">
-              <Cpu className="w-6 h-6 text-primary group-hover:text-accent transition-colors" />
-              <div className="absolute inset-0 bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
-            <span className="text-2xl font-display font-bold tracking-widest text-white">
-              NEXUS
-            </span>
+        <Link href="/" className="flex items-center gap-2 group cursor-pointer">
+          <div className="relative flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 group-hover:border-accent/50 transition-colors">
+            <Cpu className="w-6 h-6 text-primary group-hover:text-accent transition-colors" />
+            <div className="absolute inset-0 bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
+          <span className="text-2xl font-display font-bold tracking-widest text-white">
+            NEXUS
+          </span>
         </Link>
 
         {/* Desktop Nav */}
@@ -53,8 +50,9 @@ export function Navbar() {
               {link.name}
             </a>
           ))}
-          <Button 
+          <Button
             className="bg-primary hover:bg-primary/80 text-white border border-primary/50 hover:border-accent/50 shadow-[0_0_15px_-5px_var(--color-primary)] hover:shadow-[0_0_25px_-5px_var(--color-accent)] transition-all duration-300"
+            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
           >
             Get Started
           </Button>
@@ -89,7 +87,18 @@ export function Navbar() {
                   {link.name}
                 </a>
               ))}
-              <Button className="w-full bg-primary mt-4">Get Started</Button>
+              <Button
+                className="w-full bg-primary mt-4"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  const contactSection = document.getElementById("contact");
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              >
+                Get Started
+              </Button>
             </div>
           </motion.div>
         )}

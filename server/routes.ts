@@ -6,11 +6,12 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
-  // put application routes here
-  // prefix all routes with /api
-
-  // use storage to perform CRUD operations on the storage interface
-  // e.g. storage.insertUser(user) or storage.getUserByUsername(username)
+  app.post("/api/chat", async (req, res) => {
+    const { message, history } = req.body;
+    const { handleChatMessage } = await import("./chat");
+    const reply = await handleChatMessage(message, history);
+    res.json({ reply });
+  });
 
   return httpServer;
 }

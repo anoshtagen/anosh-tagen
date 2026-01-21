@@ -5,6 +5,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { Contact } from "@/components/sections/Contact";
+import { ChatBot } from "@/components/sections/ChatBot";
 import { ArrowRight } from "lucide-react";
 
 export function Home() {
@@ -22,12 +23,12 @@ export function Home() {
         className="fixed top-0 left-0 right-0 h-1 bg-accent origin-left z-[100]"
         style={{ scaleX }}
       />
-      
+
       <Navbar />
-      
+
       <main>
         <Hero />
-        
+
         {/* About / Mission Statement Mini-Section */}
         <section id="about" className="py-20 bg-black/50 border-y border-white/5">
           <div className="container px-6 mx-auto text-center">
@@ -42,7 +43,8 @@ export function Home() {
         <Portfolio />
         <Contact />
       </main>
-      
+
+      <ChatBot />
       <Footer />
     </div>
   );
