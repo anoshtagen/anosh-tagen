@@ -45,6 +45,26 @@ export function ChatBot() {
         }, 500);
     };
 
+    const generateResponse = (message: string) => {
+        const msg = message.toLowerCase();
+        if (msg.includes("hello") || msg.includes("hi") || msg.includes("hey")) {
+            return "Hello! I'm the NEXUS AI assistant. How can I help you with your business automation today?";
+        }
+        if (msg.includes("price") || msg.includes("cost") || msg.includes("much")) {
+            return "Our pricing is custom based on project scope. Small automations start at $300, while full AI agent systems typically range from $800 to $3,000+. I'd recommend booking a free consultation for an exact quote.";
+        }
+        if (msg.includes("do you do") || msg.includes("services") || msg.includes("what do you build")) {
+            return "We build custom AI agents, n8n workflows, CRM integrations, and lead capture systems. Basically, if it's manual and repetitive, we automate it to save you time and revenue.";
+        }
+        if (msg.includes("who is") || msg.includes("owner") || msg.includes("anoshtagen")) {
+            return "Anoshtagen is our Founder and Lead AI Architect. He specializes in building revenue-driven automations and neural workflows for scaling businesses.";
+        }
+        if (msg.includes("start") || msg.includes("book") || msg.includes("contact") || msg.includes("help") || msg.includes("hire")) {
+            return "The best way to start is by booking a free consultation or filling out the contact form on this page. Should I help you get to the form?";
+        }
+        return "That sounds like a great use case for automation. For a detailed breakdown of how we'd implement that, I recommend booking a quick strategy call with Anoshtagen. You can find the contact form just below our conversation!";
+    };
+
     const handleSend = async () => {
         if (!input.trim()) return;
 
@@ -53,21 +73,12 @@ export function ChatBot() {
         setInput("");
         setIsTyping(true);
 
-        try {
-            const response = await fetch("/api/chat", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ message: input, history: messages }),
-            });
-
-            const data = await response.json();
-            setMessages(prev => [...prev, { role: "assistant", content: data.reply }]);
-        } catch (error) {
-            console.error("Chat error:", error);
-            setMessages(prev => [...prev, { role: "assistant", content: "I'm having trouble connecting to my neural network. Please try again or use the contact form." }]);
-        } finally {
+        // Simulate network delay
+        setTimeout(() => {
+            const reply = generateResponse(userMessage.content);
+            setMessages(prev => [...prev, { role: "assistant", content: reply }]);
             setIsTyping(false);
-        }
+        }, 1500);
     };
 
     return (
@@ -79,9 +90,9 @@ export function ChatBot() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsOpen(true)}
-                className={`fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-accent text-background shadow-[0_0_20px_rgba(var(--color-accent),0.5)] flex items-center justify-center transition-all ${isOpen ? 'scale-0 opacity-0 pointer-events-none' : ''}`}
+                className={`fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 w-12 h-12 md:w-14 md:h-14 rounded-full bg-accent text-background shadow-[0_0_20px_rgba(var(--color-accent),0.5)] flex items-center justify-center transition-all ${isOpen ? 'scale-0 opacity-0 pointer-events-none' : ''}`}
             >
-                <MessageSquare className="w-5 h-5" />
+                <MessageSquare className="w-5 h-5 md:w-6 md:h-6" />
             </motion.button>
 
             <AnimatePresence>
@@ -90,10 +101,10 @@ export function ChatBot() {
                         initial={{ opacity: 0, y: 100, scale: 0.9, x: 20 }}
                         animate={{ opacity: 1, y: 0, scale: 1, x: 0 }}
                         exit={{ opacity: 0, y: 100, scale: 0.9, x: 20 }}
-                        className="fixed bottom-6 right-6 z-[60] w-[90vw] md:w-[360px] h-[500px] max-h-[70vh] bg-background/95 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl flex flex-col overflow-hidden"
+                        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[60] w-[calc(100vw-32px)] md:w-[360px] h-[60vh] md:h-[500px] max-h-[600px] bg-background/95 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl shadow-2xl flex flex-col overflow-hidden"
                     >
                         {/* Header */}
-                        <div className="p-4 border-b border-white/10 bg-accent/5 flex items-center justify-between">
+                        <div className="p-3 md:p-4 border-b border-white/10 bg-accent/5 flex items-center justify-between">
                             <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center border border-accent/20">
                                     <Bot className="w-5 h-5 text-accent" />
